@@ -17,8 +17,8 @@ $ git rebase -i HEAD~3
 # カレンとブランチに対して実行（ファイルを完全に削除する)
 $ git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 
-# 全てのブランチに実行
-git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch .env --prune-empty -- --all
+# 全てのブランチに実行※1
+git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch .env" --prune-empty -- --all
 
 # リポジトリを最適化(不要なオブジェクトを削除)
 git gc --aggressive --prune=now
@@ -26,6 +26,7 @@ git gc --aggressive --prune=now
 # コミットのハッシュ値が変わるので強制プッシュする
 git push -f origin main
 ```
+※1 フォルダ名を指定する場合は'foo/'
 [ドキュメント：git-filter-branch](https://git-scm.com/docs/git-filter-branch)
 
 ### メールアドレスの一括変更
