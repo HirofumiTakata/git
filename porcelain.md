@@ -2,12 +2,12 @@
 
 ### 直近のコミットを書き換え
 ```bash
-$ git commit --amend
+git commit --amend
 ```
 
 ### さらに歴史をさかのぼったコミットを変更
 ```bash
-$ git rebase -i HEAD~3
+git rebase -i HEAD~3
 ```
 
 ### 全コミットからのファイルの削除
@@ -15,7 +15,7 @@ $ git rebase -i HEAD~3
 1. 巨大なバイナリファイルをあげてしまった場合
 ```bash
 # カレンとブランチに対して実行（ファイルを完全に削除する)
-$ git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
+git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 
 # 全てのブランチに実行※1
 git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch .env" --prune-empty -- --all
@@ -31,7 +31,7 @@ git push -f origin main
 
 ### メールアドレスの一括変更
 ```bash
-$ git filter-branch --commit-filter '
+git filter-branch --commit-filter '
         if [ "$GIT_AUTHOR_EMAIL" = "schacon@localhost" ];
         then
                 GIT_AUTHOR_NAME="Scott Chacon";
