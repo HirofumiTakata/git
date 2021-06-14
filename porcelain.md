@@ -14,10 +14,10 @@ git rebase -i HEAD~3
 1. 誤って秘匿情報をpushしてしまった場合
 1. 巨大なバイナリファイルをあげてしまった場合
 ```bash
-# カレンとブランチに対して実行（ファイルを完全に削除する)
+# 'passwords.txt'を削除する（各チェックアウトに対してコマンドを実行し、結果を再コミットする）
 git filter-branch --tree-filter 'rm -f passwords.txt' HEAD
 
-# 全てのブランチに実行※1
+# 全てのブランチ（--all）に実行（ツリーをチェックアウトしないでindexを書き換えるので高速）※1
 git filter-branch -f --index-filter "git rm -rf --cached --ignore-unmatch .env" --prune-empty -- --all
 
 # リポジトリを最適化(不要なオブジェクトを削除)
